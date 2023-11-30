@@ -39,7 +39,7 @@ class Admin::AdminsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price, category_ids: []).tap do |whitelisted|
+    params.require(:product).permit(:name, :description, :price, :image, category_ids: []).tap do |whitelisted|
       new_category_name = params.dig(:product, :new_category_name)
       whitelisted[:categories_attributes] = [{ name: new_category_name }] if new_category_name.present?
     end

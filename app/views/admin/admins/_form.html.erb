@@ -23,7 +23,10 @@
     <%= form.label :new_category_name, 'Add a new category' %>
     <%= form.text_field :new_category_name %>
   </div>
-
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
 
   <div>
     <%= form.submit 'Save Product' %>
