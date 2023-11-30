@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   # User login and dashboard
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
-
+  resources :products, only: [:index]
   get 'logout', to: 'sessions#destroy', as: 'logout'
   namespace :admin do
+    get 'dashboard', to: 'dashboard#index', as: 'dashboard'
     get 'new_product', to: 'admins#new_product', as: 'new_product'
     post 'create_product', to: 'admins#create_product', as: 'create_product'
     get 'edit_product/:id', to: 'admins#edit_product', as: 'edit_product'

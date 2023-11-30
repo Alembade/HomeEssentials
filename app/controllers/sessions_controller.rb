@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       log_in user
-      redirect_to root_path, notice: 'Logged in successfully!'
+      if user.admin?
+        redirect_to admin_dashboard_path, notice: 'Logged in successfully!'
+      else
+        redirect_to root_path, notice: 'Logged in successfully!'
+      end
     else
       flash.now[:alert] = 'Invalid email or password'
       render :new
