@@ -1,0 +1,31 @@
+<%= form_with(model: [:admin, product], local: true, url: admin_create_product_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :categories, 'Select or add categories' %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name, { prompt: 'Select or add categories', multiple: true }, {} %>
+  </div>
+
+  <div>
+    <%= form.label :new_category_name, 'Add a new category' %>
+    <%= form.text_field :new_category_name %>
+  </div>
+
+
+  <div>
+    <%= form.submit 'Save Product' %>
+  </div>
+<% end %>

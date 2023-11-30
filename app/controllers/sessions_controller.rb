@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       log_in user
       if user.admin?
-        redirect_to admin_dashboard_path, notice: 'Logged in successfully!'
+        redirect_to root_path, notice: 'Logged in successfully!'
       else
         redirect_to root_path, notice: 'Logged in successfully!'
       end

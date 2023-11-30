@@ -2,6 +2,8 @@
   <h1>Welcome, <%= current_user.name %>!</h1>
  <%= link_to 'Logout', logout_path %>
  <%= link_to 'Product Listing', products_path %>
+ <% if current_user.admin? %>
+  <% end %>
 <% else %>
   <h1>Welcome to our website!</h1>
   <%= link_to 'Login', login_path %>

@@ -1,6 +1,10 @@
 <h1>Sign Up</h1>
 
 <%= form_with(model: @user, url: signup_path, method: :post) do |form| %>
+ <div class="field">
+    <%= form.label :admin %>
+    <%= form.check_box :admin %>
+  </div>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -20,7 +24,6 @@
     <%= form.label :password_confirmation %>
     <%= form.password_field :password_confirmation %>
   </div>
-
   <div>
     <%= form.submit 'Sign Up' %>
   </div>
