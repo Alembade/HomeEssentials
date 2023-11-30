@@ -7,14 +7,7 @@
 <ul>
   <% @products.each do |product| %>
     <li>
-      <strong><%= product.name %></strong>
-      <p><%= product.description %></p>
-      <p>Price: <%= number_to_currency(product.price) %></p>
-
-      <% if current_user && current_user.admin? %>
-        <%= link_to 'Edit', admin_edit_product_path(product) %> |
-        <%= button_to 'Delete', admin_delete_product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+      <strong><%= link_to product.name, product_path(product) %></strong>
     </li>
   <% end %>
 </ul>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   resources :products, only: [:index]
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  resources :products, only: [:index, :show]
   namespace :admin do
     get 'new_product', to: 'admins#new_product', as: 'new_product'
     post 'create_product', to: 'admins#create_product', as: 'create_product'
