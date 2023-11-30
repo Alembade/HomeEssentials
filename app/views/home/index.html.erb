@@ -1,0 +1,9 @@
+<% if logged_in? %>
+  <!-- Display a welcome message for logged-in users -->
+  <h1>Welcome, <%= current_user.name %>!</h1>
+ <%= link_to 'Logout', logout_path %>
+<% else %>
+  <!-- Display a welcome message for non-logged-in users -->
+  <h1>Welcome to our website!</h1>
+  <%= link_to 'Login', login_path %>
+<% end %>
