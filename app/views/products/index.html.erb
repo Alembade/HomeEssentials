@@ -5,9 +5,9 @@
 <% end %>
 
 <ul>
-  <% @products.each do |product| %>
+  <% @categories.each do |category| %>
     <li>
-      <strong><%= link_to product.name, product_path(product) %></strong>
+      <strong><%= link_to category.name, show_category_product_path(category) %></strong>
     </li>
   <% end %>
 </ul>
