@@ -23,5 +23,6 @@ Rails.application.routes.draw do
     delete 'delete_product/:id', to: 'admins#delete_product', as: 'delete_product'
   end
   post 'add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
+  get 'cart', to: 'carts#show', as: 'cart'
 
 end

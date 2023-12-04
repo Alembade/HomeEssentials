@@ -18,4 +18,16 @@ class ProductsController < ApplicationController
     @keyword = params[:keyword]
     @products = Product.where("name LIKE ? OR description LIKE ?", "%#{@keyword}%", "%#{@keyword}%").distinct
   end
+  def add_to_cart
+    product_id = params[:id].to_i
+    @product = Product.find(product_id)
+
+    cart = session[:cart] || {}
+    cart[product_id] ||= 0
+    cart[product_id] += 1
+
+    session[:cart] = cart
+
+    redirect_to cart_path, notice: 'Product added to cart.'
+  end
 end
