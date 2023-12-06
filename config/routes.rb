@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     get 'edit_product/:id', to: 'admins#edit_product', as: 'edit_product'
     patch 'update_product/:id', to: 'admins#update_product', as: 'update_product'
     delete 'delete_product/:id', to: 'admins#delete_product', as: 'delete_product'
+    get 'edit_about', to: 'admins#edit_about', as: 'edit_about_admin'
+    patch 'update_about', to: 'admins#update_about', as: 'update_about_admin'
   end
 
   post 'add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
@@ -35,4 +37,5 @@ Rails.application.routes.draw do
   get 'success', to: 'checkouts#success', as: 'checkout_success'
   get 'cancel', to: 'checkouts#cancel', as: 'checkout_cancel'
   end
+  get 'about', to: 'about#index'
 end

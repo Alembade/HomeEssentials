@@ -36,7 +36,13 @@ class Admin::AdminsController < ApplicationController
     product.destroy
     redirect_to root_path, notice: 'Product deleted successfully!'
   end
+  def update_about
+    Rails.application.config.about_text = params[:about_text]
+    Rails.application.config.contact_phone = params[:contact_phone]
+    Rails.application.config.contact_email = params[:contact_email]
 
+    redirect_to root_path, notice: 'About information updated successfully!'
+  end
   private
   def product_params
     params.require(:product).permit(:name, :description, :price, :image, category_ids: []).tap do |whitelisted|
