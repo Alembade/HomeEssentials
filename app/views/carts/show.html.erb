@@ -1,14 +1,14 @@
 <h1>Your Cart</h1>
 
-<% if @cart.empty? %>
+<% if @order_items.empty? %>
   <p>Your cart is empty.</p>
 <% else %>
   <ul>
-    <% @cart.each do |product_id, quantity| %>
-      <% product = Product.find(product_id) %>
+    <% @order_items.each do |order_item| %>
       <li>
-        <%= link_to product.name, product_path(product) %>
-        - Quantity: <%= quantity %>
+        <%= link_to order_item.product.name, product_path(order_item.product) %>
+        - Quantity: <%= order_item.quantity %>
+        <%= button_to 'Remove from Cart', remove_from_cart_path(order_item.product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
       </li>
     <% end %>
   </ul>

@@ -22,7 +22,10 @@ Rails.application.routes.draw do
     patch 'update_product/:id', to: 'admins#update_product', as: 'update_product'
     delete 'delete_product/:id', to: 'admins#delete_product', as: 'delete_product'
   end
-  post 'add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
-  get 'cart', to: 'carts#show', as: 'cart'
 
+  post 'add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
+  resource :cart, only: [:show, :create, :destroy] do
+    resources :order_items, only: [:destroy], as: 'items', path: 'items'
+  end
+  delete 'remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
 end
