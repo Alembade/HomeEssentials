@@ -4,7 +4,7 @@
 <% if @product.image.attached? %>
   <%= image_tag @product.image, style: 'max-height: 300px;' %>
 <% end %>
-<%= button_to 'Add to Cart', add_to_cart_path(@product), method: :post %>
+<%= button_to 'Add to Cart 🛒', add_to_cart_path(@product), method: :post %>
 
 <% if current_user && current_user.admin? %>
   <%= link_to 'Edit', admin_edit_product_path(@product) %> |
