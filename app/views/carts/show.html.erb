@@ -7,9 +7,9 @@
     <% @order_items.each do |order_item| %>
       <li>
         <%= link_to order_item.product.name, product_path(order_item.product) %>
-           - Quantity: <%= order_item.quantity %>
+        - Quantity: <%= order_item.quantity %>
         <%= form_with(model: order_item, url: cart_item_path(order_item), method: :put, local: true) do |form| %>
-        <%= form.text_field :quantity %>
+          <%= form.text_field :quantity %>
           <%= form.submit 'Update Quantity' %>
         <% end %>
         <%= button_to 'Remove from Cart', remove_from_cart_path(order_item.product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
@@ -18,4 +18,9 @@
   </ul>
 <% end %>
 
+<% if @order_items.any? %>
+  <%= button_to 'Checkout', create_checkout_path(order_item_id: @order_items.first.id), method: :post, class: 'btn btn-primary' %>
+<% else %>
+  <p>Your cart is empty.</p>
+<% end %>
 <%= link_to 'Back to Product Listing', products_path %>

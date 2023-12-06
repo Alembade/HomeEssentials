@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'checkouts/create'
   get 'order_items/update'
   root 'home#index'
 
@@ -29,4 +30,9 @@ Rails.application.routes.draw do
     resources :order_items, only: [:destroy, :update], as: 'items', path: 'items'
   end
   delete 'remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
+  scope '/checkouts' do
+  post 'create', to: 'checkouts#create', as: 'create_checkout'
+  get 'success', to: 'checkouts#success', as: 'checkout_success'
+  get 'cancel', to: 'checkouts#cancel', as: 'checkout_cancel'
+  end
 end
