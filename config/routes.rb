@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'checkouts/create'
+  get 'order_items/update'
   root 'home#index'
 
   get 'signup', to: 'users#new', as: 'signup'
@@ -21,11 +23,19 @@ Rails.application.routes.draw do
     get 'edit_product/:id', to: 'admins#edit_product', as: 'edit_product'
     patch 'update_product/:id', to: 'admins#update_product', as: 'update_product'
     delete 'delete_product/:id', to: 'admins#delete_product', as: 'delete_product'
+    get 'edit_about', to: 'admins#edit_about', as: 'edit_about_admin'
+    patch 'update_about', to: 'admins#update_about', as: 'update_about_admin'
   end
 
   post 'add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
   resource :cart, only: [:show, :create, :destroy] do
-    resources :order_items, only: [:destroy], as: 'items', path: 'items'
+    resources :order_items, only: [:destroy, :update], as: 'items', path: 'items'
   end
   delete 'remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
+  scope '/checkouts' do
+  post 'create', to: 'checkouts#create', as: 'create_checkout'
+  get 'success', to: 'checkouts#success', as: 'checkout_success'
+  get 'cancel', to: 'checkouts#cancel', as: 'checkout_cancel'
+  end
+  get 'about', to: 'about#index'
 end
