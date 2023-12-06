@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'order_items/update'
   root 'home#index'
 
   get 'signup', to: 'users#new', as: 'signup'
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
 
   post 'add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
   resource :cart, only: [:show, :create, :destroy] do
-    resources :order_items, only: [:destroy], as: 'items', path: 'items'
+    resources :order_items, only: [:destroy, :update], as: 'items', path: 'items'
   end
   delete 'remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
 end
