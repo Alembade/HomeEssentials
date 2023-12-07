@@ -1,10 +1,31 @@
-<% if logged_in? %>
-  <h1>Welcome, <%= current_user.name %>!</h1>
- <%= link_to 'Logout', logout_path %>
- <%= link_to 'Product Listing', products_path %>
- <% if current_user.admin? %>
+<div class="home-page">
+  <% if logged_in? %>
+    <div class="welcome-message">
+      <h1>Welcome, <%= current_user.name %>!</h1>
+    </div>
+    <div class="user-info">
+    </div>
+    <div class="quote-and-image">
+      <div class="quote">
+         <p><span class="quote-line1">Elevate your</span><br><span class="quote-line2">home with style and </span><span class="quote-line3"> comfort</span></p>
+      </div>
+      <div class="image">
+        <%= image_tag 'house.jpg', alt: 'Home essentials' %>
+      </div>
+    </div>
+  <% else %>
+    <div class="welcome-message">
+      <h1>HomeEssentials!</h1>
+    </div>
+    <div class="user-info">
+    </div>
+    <div class="quote-and-image">
+      <div class="quote">
+         <p><span class="quote-line1">Elevate your</span><br><span class="quote-line2">home with style and </span><span class="quote-line3"> comfort</span></p>
+      </div>
+      <div class="image">
+        <%= image_tag 'house.jpg', alt: 'Home essentials' %>
+      </div>
+    </div>
   <% end %>
-<% else %>
-  <h1>Welcome to our website!</h1>
-  <%= link_to 'Login', login_path %>
-<% end %>
+</div>
