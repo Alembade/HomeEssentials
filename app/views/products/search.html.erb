@@ -1,13 +1,13 @@
-<h1>Search Results</h1>
+<div class="search-results-container">
+  <h1 class="search-results-heading">Search Results</h1>
 
-<% if @products.any? %>
-  <ul>
-    <% @products.each do |product| %>
-      <li><%= link_to product.name, product_path(product) %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No products found for '<%= @keyword %>'</p>
-<% end %>
-
-<%= link_to 'Back to Product Listing', products_path %>
+  <% if @products.any? %>
+    <ul class="search-results-list">
+      <% @products.each do |product| %>
+        <li class="search-result-item"><%= link_to product.name, product_path(product), class: 'search-result-link' %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="no-results-message">No products found for '<%= @keyword %>'</p>
+  <% end %>
+</div>

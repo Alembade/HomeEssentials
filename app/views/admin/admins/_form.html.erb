@@ -1,35 +1,39 @@
-<%= form_with(model: [:admin, product], local: true, url: (@product.persisted? ? admin_update_product_path(@product) : admin_create_product_path), method: (@product.persisted? ? :patch : :post)) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="edit-form-container">
+  <%= form_with(model: [:admin, product], local: true, url: (@product.persisted? ? admin_update_product_path(@product) : admin_create_product_path), method: (@product.persisted? ? :patch : :post)) do |form| %>
 
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="form-group">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-input' %>
+    </div>
 
-  <div>
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
+    <div class="form-group">
+      <%= form.label :description, class: 'form-label' %>
+      <%= form.text_area :description, class: 'form-input' %>
+    </div>
 
- <div>
-    <%= form.label :categories, 'Select or add categories' %>
-    <%= form.collection_select :category_ids, Category.all, :id, :name, { prompt: 'Select or add categories', multiple: true }, {} %>
-  </div>
+    <div class="form-group">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-input' %>
+    </div>
 
-  <div>
-    <%= form.label :new_category_name, 'Add a new category' %>
-    <%= form.text_field :new_category_name %>
-  </div>
+    <div class="form-group">
+      <%= form.label :categories, 'Select or add categories', class: 'form-label' %>
+      <%= form.collection_select :category_ids, Category.all, :id, :name, { prompt: 'Select or add categories', multiple: true, class: 'form-input' }, {} %>
+    </div>
 
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+    <div class="form-group">
+      <%= form.label :new_category_name, 'Add a new category', class: 'form-label' %>
+      <%= form.text_field :new_category_name, class: 'form-input' %>
+    </div>
 
-  <div>
-    <%= form.submit 'Save Product' %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= form.label :image, class: 'form-label' %>
+      <%= form.file_field :image, class: 'form-file-input' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Save Product', class: 'form-button' %>
+    </div>
+
+  <% end %>
+</div>

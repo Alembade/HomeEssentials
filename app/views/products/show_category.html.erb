@@ -1,12 +1,16 @@
-<h1>Products in <%= @category.name %> Category</h1>
-<%= form_with(url: search_products_path, method: :get) do |form| %>
-  <%= form.text_field :keyword, placeholder: 'Enter keyword' %>
-  <%= form.submit 'Search' %>
-<% end %>
-<ul>
-  <% @products.each do |product| %>
-    <li>
-      <strong><%= link_to product.name, show_product_product_path(product) %></strong>
-    </li>
+<div class="product-container">
+  <h1 class="product-heading">Products in <%= @category.name %> Category</h1>
+
+  <%= form_with(url: search_products_path, method: :get, class: 'search-form') do |form| %>
+    <%= form.text_field :keyword, placeholder: 'Enter keyword' %>
+    <%= form.submit 'Search' %>
   <% end %>
-</ul>
+
+  <ul class="product-list">
+    <% @products.each do |product| %>
+      <li class="product-item">
+        <strong><%= link_to product.name, show_product_product_path(product), class: 'product-link' %></strong>
+      </li>
+    <% end %>
+  </ul>
+</div>

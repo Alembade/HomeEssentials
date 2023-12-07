@@ -1,26 +1,35 @@
-<h1>Your Cart</h1>
+<div class="cart-container">
+  <h1 class="cart-header">Your Cart</h1>
 
-<% if @order_items.empty? %>
-  <p>Your cart is empty.</p>
-<% else %>
-  <ul>
-    <% @order_items.each do |order_item| %>
-      <li>
-        <%= link_to order_item.product.name, product_path(order_item.product) %>
-        - Quantity: <%= order_item.quantity %>
-        <%= form_with(model: order_item, url: cart_item_path(order_item), method: :put, local: true) do |form| %>
-          <%= form.text_field :quantity %>
-          <%= form.submit 'Update Quantity' %>
-        <% end %>
-        <%= button_to 'Remove from Cart', remove_from_cart_path(order_item.product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @order_items.empty? %>
+    <p class="cart-empty-message">Your cart is empty.</p>
+  <% else %>
+    <ul class="cart-item-list">
+      <% @order_items.each do |order_item| %>
+        <li class="cart-item">
+          <div class="cart-item-details">
+            <%= link_to order_item.product.name, product_path(order_item.product), class: 'editlink' %>
+            - Quantity: <%= order_item.quantity %>
+          </div>
 
-<% if @order_items.any? %>
-  <%= button_to 'Checkout 💳', create_checkout_path(order_item_id: @order_items.first.id), method: :post, class: 'btn btn-primary' %>
-<% else %>
-  <p>Your cart is empty.</p>
-<% end %>
-<%= link_to 'Back to Product Listing', products_path %>
+          <div class="cart-item-actions">
+            <%= form_with(model: order_item, url: cart_item_path(order_item), method: :put, local: true, class: 'update-quantity-form') do |form| %>
+              <%= form.text_field :quantity, class: 'update-quantity-input' %>
+              <%= form.submit 'Update Quantity', class: 'update-quantity-button' %>
+            <% end %>
+
+            <%= button_to 'Remove from Cart', remove_from_cart_path(order_item.product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'remove-from-cart-button' %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if @order_items.any? %>
+    <%= button_to 'Checkout 💳', create_checkout_path(order_item_id: @order_items.first.id), method: :post, class: 'checkout-button' %>
+  <% else %>
+    <p class="empty-cart-message">Your cart is empty.</p>
+  <% end %>
+
+  <%= link_to 'Back to Product Listing', products_path, class: 'back-to-listing-link' %>
+</div>

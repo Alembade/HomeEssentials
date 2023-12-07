@@ -1,56 +1,59 @@
-<h1>Sign Up</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Sign Up</h1>
 
-<%= form_with(model: @user, url: signup_path, method: :post) do |form| %>
- <div class="field">
-    <%= form.label :admin %>
-    <%= form.check_box :admin %>
-  </div>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= form_with(model: @user, url: signup_path, method: :post, class: 'mb-4') do |form| %>
+    <div class="mb-3 form-check">
+      <%= form.check_box :admin, class: 'form-check-input' %>
+      <%= form.label :admin, class: 'form-check-label' %>
+    </div>
 
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :email, class: 'form-label' %>
+      <%= form.email_field :email, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :password, class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :password_confirmation, class: 'form-label' %>
+      <%= form.password_field :password_confirmation, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :province %>
-    <%= form.text_field :province %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :country, class: 'form-label' %>
+      <%= form.text_field :country, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :province, class: 'form-label' %>
+      <%= form.text_field :province, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :postal_code %>
-    <%= form.text_field :postal_code %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :city, class: 'form-label' %>
+      <%= form.text_field :city, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address %>
-  </div>
+    <div class="mb-3">
+      <%= form.label :postal_code, class: 'form-label' %>
+      <%= form.text_field :postal_code, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.submit 'Sign Up' %>
-  </div>
-<% end %>
+    <div class="mb-3">
+      <%= form.label :street_address, class: 'form-label' %>
+      <%= form.text_field :street_address, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit 'Sign Up', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
