@@ -10,9 +10,12 @@ class ProductsController < ApplicationController
     @category = Category.find(params[:id])
     @products = @category.products
   end
+  def on_sale
+    @products = Product.where(on_sale: true)
+  end
 
-  def show_product
-    @product = Product.find(params[:id])
+  def new_products
+    @products = Product.where(new_product: true)
   end
   def search
     @keyword = params[:keyword]

@@ -40,6 +40,7 @@ gem 'rails-ujs'
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'kaminari'
 gem 'bootstrap', '~> 5.3.2'
+gem 'will_paginate'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false

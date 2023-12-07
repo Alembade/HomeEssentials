@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
 
   resources :products, only: [:index, :show] do
+    collection do
+      get 'on_sale', to: 'products#on_sale', as: 'on_sale'
+      get 'new_products', to: 'products#new_products', as: 'new_products'
+    end
     get 'show_category/:id', to: 'products#show_category', on: :member, as: :show_category
     get 'show_product/:id', to: 'products#show', on: :member, as: :show_product
     get 'search', on: :collection

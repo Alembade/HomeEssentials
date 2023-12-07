@@ -1,16 +1,14 @@
 <div class='containerP'>
-<h1>Product List</h1>
+  <h1>Product List</h1>
 
-<% if current_user && current_user.admin? %>
-  <%= link_to 'Add New Product', admin_new_product_path %>
-<% end %>
-
-<ul class ='ulp'>
-  <% @categories.each do |category| %>
-    <li class = 'lip'>
-      <strong><%= link_to category.name, show_category_product_path(category) %></strong>
-    </li>
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Add New Product', admin_new_product_path %>
   <% end %>
-</ul>
+  <ul class='ulp'>
+    <% @categories.each do |category| %>
+      <li class='lip'>
+        <strong><%= link_to category.name, show_category_product_path(category) %></strong>
+      </li>
+    <% end %>
+  </ul>
 </div>
-
