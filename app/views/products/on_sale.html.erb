@@ -4,12 +4,12 @@
 
     <div>
       <% if product.image.attached? %>
-        <%= image_tag product.image, class: 'product-image' %>
+        <%= image_tag url_for(product.image.variant(resize_to_limit: [200, 200])), class: 'product-image' %>
       <% end %>
 
       <p><strong>Description:</strong> <%= product.description %></p>
       <p><strong>Price:</strong> <%= number_to_currency(product.price) %></p>
     </div>
-     <%= button_to 'Add to Cart 🛒', add_to_cart_path(product), method: :post, class: 'add-to-cart-button' %>
+    <%= button_to 'Add to Cart 🛒', add_to_cart_path(product), method: :post, class: 'add-to-cart-button' %>
   </div>
 <% end %>

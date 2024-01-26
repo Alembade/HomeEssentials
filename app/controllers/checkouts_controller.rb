@@ -39,7 +39,7 @@ class CheckoutsController < ApplicationController
       cancel_url: checkout_cancel_url,
       line_items: line_items
     )
-
+    flash[:success] = "Payment was successful. Thank you for your purchase!"
     redirect_to @session.url, allow_other_host: true
   end
 end

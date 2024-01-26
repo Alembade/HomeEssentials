@@ -4,17 +4,20 @@
   <p class="product-price">Price: <%= number_to_currency(@product.price) %></p>
 
   <% if @product.image.attached? %>
-    <%= image_tag @product.image, class: 'product-image' %>
+    <%= image_tag url_for(@product.image.variant(resize_to_limit: [200, 200])), class: 'product-image', alt: 'Product Image' %>
   <% end %>
 
-  <%= button_to 'Add to Cart 🛒', add_to_cart_path(@product), method: :post, class: 'add-to-cart-button' %>
-
+  <%= form_tag add_to_cart_path(@product), method: :post do %>
+  <%= submit_tag 'Add to Cart 🛒', class: 'add-to-cart-button' %>
+  <% end %>
   <% if current_user && current_user.admin? %>
     <div class="admin-actions">
       <%= link_to 'Edit', admin_edit_product_path(@product), class: 'admin-edit-link' %>
     </div>
     <div>
-      <%= button_to 'Delete', admin_delete_product_path(@product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'admin-delete-button' %>
+      <%= form_tag admin_delete_product_path(@product), method: :delete do %>
+        <%= submit_tag 'Delete', class: 'admin-delete-button' %>
+      <% end %>
     </div>
   <% end %>
 

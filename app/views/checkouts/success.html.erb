@@ -2,3 +2,8 @@
   <%= debug @session %>
   <%= debug @payment_intent %>
 </h1>
+<% flash.each do |key, value| %>
+  <div class="flash <%= key %>">
+    <%= value %>
+  </div>
+<% end %>

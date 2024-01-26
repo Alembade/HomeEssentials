@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   def show_category
     @category = Category.find(params[:id])
-    @products = @category.products
+    @products = @category.products.paginate(page: params[:page], per_page: 5)
   end
   def on_sale
     @products = Product.where(on_sale: true)
