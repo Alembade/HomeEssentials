@@ -2,6 +2,7 @@ databases:
   - name: homeessentials
     databaseName:  homeessentials
     user: alem
+    plan: free
 
 services:
   - type: web
